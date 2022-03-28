@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿
 namespace LogisticsSystem.Data.Models.Enums
 {
-    public class PersonType
+    public enum PersonType
     {
+        Unknown = 1,
+        Buyer = 2,
+        Seller = 3
     }
 }

@@ -1,11 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿
 namespace LogisticsSystem.Data.Models.Enums
 {
-    public class ReportKind
+    public enum ReportKind
     {
+        Unknown = 1,
+        WrongKind = 2,
+        WrongSubKind = 3,
+        Sexual = 4,
+        Nudity = 5,
+        WrongPictures = 6,
+        ItemDoesNotExists = 7,
+        Spam = 8,
+        WrongDescription = 9,
+        Scam = 10
     }
 }

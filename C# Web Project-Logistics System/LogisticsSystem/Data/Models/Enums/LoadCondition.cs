@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿
 namespace LogisticsSystem.Data.Models.Enums
 {
-    public class LoadCondition
+    public enum LoadCondition
     {
+        Unknown = 1,
+        New = 2,
+        Used = 3,
+        Damaged = 4
     }
 }
