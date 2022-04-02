@@ -1,7 +1,7 @@
-﻿using Logistics_System.Services.Questions.Models;
+﻿using LogisticsSystem.Services.Questions.Models;
 using System.Collections.Generic;
 
-namespace Logistics_System.Services.Questions
+namespace LogisticsSystem.Services.Questions
 {
     public interface IQuestionsService
     {

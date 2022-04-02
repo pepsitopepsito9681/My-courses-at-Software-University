@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Logistics_System.Services.Questions.Models
+namespace LogisticsSystem.Services.Questions.Models
 {
     public class QuestionQueryModel
     {

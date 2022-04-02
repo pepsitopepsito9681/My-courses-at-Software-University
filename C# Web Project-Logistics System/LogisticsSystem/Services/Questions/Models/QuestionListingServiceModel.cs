@@ -1,5 +1,5 @@
 ﻿
-namespace Logistics_System.Services.Questions.Models
+namespace LogisticsSystem.Services.Questions.Models
 {
     public class QuestionListingServiceModel:IQuestionModel
     {

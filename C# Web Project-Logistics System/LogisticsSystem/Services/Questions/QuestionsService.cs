@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Logistics_System.Data;
-using Logistics_System.Data.Models;
-using Logistics_System.Services.Questions.Models;
+using LogisticsSystem.Data;
+using LogisticsSystem.Data.Models;
+using LogisticsSystem.Services.Questions.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Logistics_System.Services.Questions
+namespace LogisticsSystem.Services.Questions
 {
     public class QuestionsService:IQuestionsService
     {

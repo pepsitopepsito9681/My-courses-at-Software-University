@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 using LogisticsSystem.Data.Models;
-using LogisticsSystem.Services.Comments.Models;
+using LogisticsSystem.Services.Responses.Models;
 using static LogisticsSystem.Infrastructure.ProfileConstants;
 
 namespace LogisticsSystem.Infrastructure.Profiles
 {
-    public class CommentProfile:Profile
+    public class ResponsesProfile:Profile
     {
-        public CommentProfile()
+        public ResponsesProfile()
         {
-            this.CreateMap<Comment, CommentServiceModel>()
+            this.CreateMap<Response, ResponseServiceModel>()
                 .ForMember(x => x.UserName, cfg => cfg.MapFrom(x => x.User.FullName))
                 .ForMember(x => x.PublishedOn, cfg => cfg.MapFrom(x => x.PublishedOn.ToString(DateTimeFormat)));
         }
