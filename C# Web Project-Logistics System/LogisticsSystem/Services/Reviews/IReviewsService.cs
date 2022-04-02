@@ -1,0 +1,51 @@
+﻿using LogisticsSystem.Data.Models.Enums;
+using LogisticsSystem.Services.Reviews.Models;
+using System.Collections.Generic;
+
+namespace LogisticsSystem.Services.Reviews
+{
+    public interface IReviewsService
+    {
+        void Create(
+            string loadId,
+            string userId,
+            ReviewKind rating,
+            string content,
+            string title,
+            bool IsPublic = false);
+
+        bool Edit(
+            int id,
+            ReviewKind rating,
+            string content,
+            string title,
+            bool IsPublic = false
+            );
+
+        ReviewDetailsServiceModel Details(int id);
+
+        IEnumerable<ReviewListingServiceModel> ByUser(string userId);
+
+        ReviewQueryModel All(
+            string searchTerm = null,
+            int currentPage = 1,
+            int reviewsPerPage = int.MaxValue,
+            ReviewKind? reviewFiltering = null,
+            bool IsPublicOnly = true,
+            string loadId = null);
+
+        ReviewsLoadStatisticsServiceModel GetStatisticsForLoad(string loadId);
+
+        ReviewServiceModel ReviewByLoadAndUser(string loadId, string userId);
+
+        ReviewServiceModel ReviewById(int id);
+
+        void ChangeVisibility(int id);
+
+        bool ReviewExists(int id);
+
+        bool ReviewIsByUser(int id, string userId);
+
+        bool Delete(int id);
+    }
+}

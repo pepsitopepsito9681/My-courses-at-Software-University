@@ -20,17 +20,4 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Comments\" />
-    <Folder Include="Services\DeliveryCarts\" />
-    <Folder Include="Services\Favourites\" />
-    <Folder Include="Services\Loads\" />
-    <Folder Include="Services\Statistics\" />
-    <Folder Include="Services\Reviews\" />
-    <Folder Include="Services\Responses\" />
-    <Folder Include="Services\Reports\" />
-    <Folder Include="Services\Questions\" />
-    <Folder Include="Services\Orders\" />
-  </ItemGroup>
-
 </Project>
