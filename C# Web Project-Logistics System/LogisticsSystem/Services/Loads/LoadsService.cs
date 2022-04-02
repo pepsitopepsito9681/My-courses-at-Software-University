@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Logistics_System.Services.Loads
+namespace LogisticsSystem.Services.Loads
 {
     public class LoadsService:ILoadsService
     {

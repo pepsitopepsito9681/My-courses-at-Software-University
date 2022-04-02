@@ -6,7 +6,7 @@ using LogisticsSystem.Services.Favourites.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Logistics_System.Services.Favourites
+namespace LogisticsSystem.Services.Favourites
 {
     public class FavouritesService:IFavouritesService
     {

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LogisticsSystem.Areas.Admin.Models.Loads;
 using LogisticsSystem.Data.Models;
 using LogisticsSystem.Data.Models.Enums;
 using LogisticsSystem.Models.Loads;
@@ -32,6 +33,9 @@ namespace LogisticsSystem.Infrastructure.Profiles
             .ForMember(p => p.MainImageUrl, pd => pd.MapFrom(x => x.Images.Select(x => x.ImageUrl).FirstOrDefault()))
             .ForMember(p => p.SecondImageUrl, pd => pd.MapFrom(x => x.Images.Skip(1).Take(1).Select(x => x.ImageUrl).FirstOrDefault()))
             .ForMember(p => p.ThirdImageUrl, pd => pd.MapFrom(x => x.Images.Skip(2).Take(1).Select(x => x.ImageUrl).FirstOrDefault()));
+
+            this.CreateMap<LoadDetailsServiceModel, LoadModel>()
+                .ForMember(p => p.Image, pd => pd.MapFrom(x => x.MainImageUrl));
         }
     }
 }

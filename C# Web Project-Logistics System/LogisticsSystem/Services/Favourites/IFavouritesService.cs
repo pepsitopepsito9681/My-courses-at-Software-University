@@ -1,7 +1,7 @@
 ﻿using LogisticsSystem.Services.Favourites.Models;
 using System.Collections.Generic;
 
-namespace Logistics_System.Services.Favourites
+namespace LogisticsSystem.Services.Favourites
 {
     public interface IFavouritesService
     {

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Logistics_System.Services.DeliveryCarts
+namespace LogisticsSystem.Services.DeliveryCarts
 {
     public class DeliveryCartService:IDeliveryCartService
     {

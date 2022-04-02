@@ -2,7 +2,7 @@
 using LogisticsSystem.Services.Loads.Models;
 using System.Collections.Generic;
 
-namespace Logistics_System.Services.Loads
+namespace LogisticsSystem.Services.Loads
 {
     public interface ILoadsService
     {

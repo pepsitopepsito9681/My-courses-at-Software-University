@@ -1,7 +1,7 @@
 ﻿using LogisticsSystem.Services.DeliveryCarts.Models;
 using System.Collections.Generic;
 
-namespace Logistics_System.Services.DeliveryCarts
+namespace LogisticsSystem.Services.DeliveryCarts
 {
     public interface IDeliveryCartService
     {
