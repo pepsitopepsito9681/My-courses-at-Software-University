@@ -1,37 +1,44 @@
-﻿using LogisticsSystem.Models;
+﻿using LogisticsSystem.Services.Loads;
+using LogisticsSystem.Services.Loads.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+using static LogisticsSystem.WebConstants.Cache;
 
 namespace LogisticsSystem.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILoadsService loads;
+        private readonly IMemoryCache cache;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILoadsService loads, IMemoryCache cache)
         {
-            _logger = logger;
+            this.loads = loads;
+            this.cache = cache;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var latestLoads = this.cache.Get<List<LoadServiceModel>>(LatestLoadsCacheKey);
+
+            if (latestLoads == null)
+            {
+                var loads = this.loads
+                    .Latest()
+                    .ToList();
+
+                var cacheOptions = new MemoryCacheEntryOptions()
+                    .SetAbsoluteExpiration(TimeSpan.FromMinutes(15));
+
+                latestLoads = this.cache.Set(LatestLoadsCacheKey, loads, cacheOptions);
+            }
+
+            return this.View(latestLoads);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        public IActionResult Error() => View();
     }
 }
