@@ -47,7 +47,7 @@ namespace LogisticsSystem.Controllers
             return View();
 
         }
-        /*
+        
         [Authorize]
         [HttpPost]
         public IActionResult Add(string Id, ReviewFormModel review)
@@ -87,7 +87,6 @@ namespace LogisticsSystem.Controllers
 
             return RedirectToAction(nameof(LoadsController.Details), "Loads", new { id = Id });
         }
-        */
 
         public IActionResult Details(int id, string information)
         {

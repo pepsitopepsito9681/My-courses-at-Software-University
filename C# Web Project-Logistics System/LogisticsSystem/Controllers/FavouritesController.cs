@@ -16,7 +16,7 @@ namespace LogisticsSystem.Controllers
             this.favourites = favourites;
             this.loads = loads;
         }
-        /*
+        
         [Authorize]
         public IActionResult Add(string id)
         {
@@ -37,7 +37,7 @@ namespace LogisticsSystem.Controllers
 
             return RedirectToAction(nameof(LoadsController.Details), "Loads", new { id });
         }
-        */
+        
         [Authorize]
         public IActionResult Delete(int id)
         {
