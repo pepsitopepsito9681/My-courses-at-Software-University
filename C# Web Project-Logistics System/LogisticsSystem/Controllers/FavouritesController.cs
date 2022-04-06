@@ -16,7 +16,7 @@ namespace LogisticsSystem.Controllers
             this.favourites = favourites;
             this.loads = loads;
         }
-
+        /*
         [Authorize]
         public IActionResult Add(string id)
         {
@@ -37,7 +37,7 @@ namespace LogisticsSystem.Controllers
 
             return RedirectToAction(nameof(LoadsController.Details), "Loads", new { id });
         }
-
+        */
         [Authorize]
         public IActionResult Delete(int id)
         {
@@ -50,7 +50,7 @@ namespace LogisticsSystem.Controllers
 
             this.favourites.Delete(id);
 
-            this.TempData[WebConstants.GlobalMessageKey] = "Product was deleted succesfully from favourites!";
+            this.TempData[WebConstants.GlobalMessageKey] = "Load was deleted succesfully from favourites!";
 
 
             return RedirectToAction(nameof(MyFavourites));

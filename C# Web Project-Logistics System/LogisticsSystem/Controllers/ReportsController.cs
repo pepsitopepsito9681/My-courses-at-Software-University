@@ -35,7 +35,7 @@ namespace LogisticsSystem.Controllers
 
         }
 
-
+        /*
         [Authorize]
         [HttpPost]
         public IActionResult Add(string id, ReportFormModel report)
@@ -66,5 +66,6 @@ namespace LogisticsSystem.Controllers
 
             return RedirectToAction(nameof(LoadsController.Details), "Loads", new { id });
         }
+        */
     }
 }

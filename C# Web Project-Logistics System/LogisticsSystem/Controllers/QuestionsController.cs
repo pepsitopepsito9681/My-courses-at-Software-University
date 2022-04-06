@@ -32,7 +32,7 @@ namespace LogisticsSystem.Controllers
             return View();
 
         }
-
+        /*
         [Authorize]
         [HttpPost]
         public IActionResult Add(string Id, QuestionFormModel question)
@@ -61,7 +61,7 @@ namespace LogisticsSystem.Controllers
             return RedirectToAction(nameof(LoadsController.Details), "Loads", new { id = Id });
 
         }
-
+        */
         public IActionResult Details(int id, string information)
         {
             var question = this.questions.Details(id);

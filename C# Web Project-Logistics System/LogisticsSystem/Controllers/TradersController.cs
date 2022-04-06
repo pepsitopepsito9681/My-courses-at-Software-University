@@ -25,7 +25,7 @@ namespace Logistics_System.Controllers
 
             return View();
         }
-
+        /*
         [HttpPost]
         [Authorize]
         public IActionResult Become(BecomeTraderFormModel dealer)
@@ -53,5 +53,6 @@ namespace Logistics_System.Controllers
 
             return RedirectToAction(nameof(LoadsController.All), "Loads");
         }
+        */
     }
 }
