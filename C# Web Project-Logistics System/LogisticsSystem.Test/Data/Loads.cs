@@ -55,9 +55,6 @@ namespace LogisticsSystem.Test.Data
                 {
                     Id = 1,
                     Name = "TestKind",
-
-
-
                 },
                 SubKind = new SubKind
                 {
@@ -76,12 +73,9 @@ namespace LogisticsSystem.Test.Data
                     {
                         ImageUrl="TestUrl"
                     }
-
                 }
-
             };
         }
- 
 
         public static List<Load> GetLoads(int count=5,bool IsDeleted=false,bool sameUser=true)     
         {
@@ -107,11 +101,8 @@ namespace LogisticsSystem.Test.Data
              })
              .ToList();
 
-
             return loads;
 
          }
-
-        
     } 
 }

@@ -29,7 +29,6 @@ namespace LogisticsSystem.Test.Data
                 UserName = TestUser.Username
             };
 
-
             var reviews = Enumerable
                .Range(1, count)
                .Select(i => new Review
@@ -54,7 +53,6 @@ namespace LogisticsSystem.Test.Data
                })
                .ToList();
 
-
             return reviews;
         }
 
@@ -73,10 +71,7 @@ namespace LogisticsSystem.Test.Data
                   Id = $"Review Author Id {i}",
                   UserName = $"Author {i}"
               },
-
-
           })
             .ToList();
-
     }
 }

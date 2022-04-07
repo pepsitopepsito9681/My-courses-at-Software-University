@@ -16,9 +16,7 @@ namespace LogisticsSystem.Test.Data
            },
            QuestionId = questionId,
            IsPublic = IsPublic
-
        });
-
 
         public static Response GetResponse(int id = 1, bool IsPublic = true)
             => new()

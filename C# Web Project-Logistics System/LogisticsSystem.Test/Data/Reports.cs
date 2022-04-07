@@ -24,7 +24,6 @@ namespace LogisticsSystem.Test.Data
                 UserName = TestUser.Username
             };
 
-
             var reports = Enumerable
                .Range(1, count)
                .Select(i => new Report
@@ -42,13 +41,7 @@ namespace LogisticsSystem.Test.Data
                })
                .ToList();
 
-
             return reports;
-
         }
-
-   
-
-
     }
 }

@@ -20,7 +20,6 @@ namespace LogisticsSystem.Test.Data
                 UserName = TestUser.Username
             };
 
-
             var cartItems = Enumerable
                .Range(1, count)
                .Select(i => new DeliveryCartItem

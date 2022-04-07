@@ -44,7 +44,6 @@ namespace LogisticsSystem.Test.Data
              })
              .ToList();
 
-
             return favourites;
 
         }

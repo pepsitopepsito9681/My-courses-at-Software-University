@@ -26,7 +26,6 @@ namespace LogisticsSystem.Test.Data
                 UserName = TestUser.Username
             };
 
-
             var questions = Enumerable
                .Range(1, count)
                .Select(i => new Question
@@ -49,10 +48,7 @@ namespace LogisticsSystem.Test.Data
                })
                .ToList();
 
-
             return questions;
-
-
 
         }
 
@@ -71,13 +67,7 @@ namespace LogisticsSystem.Test.Data
                      Id = $"Question Author Id {i}",
                      UserName = $"Author {i}"
                },
-
           })
             .ToList();
-
-
-
-
-
     }
 }

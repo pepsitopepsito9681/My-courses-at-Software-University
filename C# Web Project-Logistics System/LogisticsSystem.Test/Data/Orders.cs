@@ -46,9 +46,6 @@ namespace LogisticsSystem.Test.Data
 
         }
 
-
-
-
         public static List<Order> GetOrders(
             int count = 5,
             bool accomplished = false,
@@ -59,7 +56,6 @@ namespace LogisticsSystem.Test.Data
                 Id = TestUser.Identifier,
                 UserName = TestUser.Username,
             };
-
 
             var orders = Enumerable
              .Range(1, count)
@@ -77,8 +73,6 @@ namespace LogisticsSystem.Test.Data
                      Id = $"Author Id {i}",
                      UserName = $"Author {i}"
                  },
-
-
              })
              .ToList();
 
