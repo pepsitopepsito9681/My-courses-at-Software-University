@@ -1,0 +1,22 @@
+﻿@model IEnumerable<LoadServiceModel>
+
+<div class="row">
+    @foreach (var load in Model)
+    {
+<div class="col-md-3">
+    <div class="card mb-3">
+        <img class="card-img-top" src="@load.MainImageUrl" alt="@load.Condition @load.Title ">
+        <div class="card-body text-center">
+            <p class="card-text">@load.Condition</p>
+            <a asp-controller="Loads" asp-action="Details" asp-route-id="@load.Id"><h5 class="card-title" style="word-wrap: break-word">@load.Title</h5></a>
+            <p class="card-text">@load.Price</p>
+
+            @if (ViewBag.AllowLoadEdit == true || this.User.IsAdmin())
+            {
+<a asp-controller="Loads" asp-action="Edit" asp-route-id="@load.Id" class="btn btn-warning">Edit</a>
+                    <a asp-controller="Loads" asp-action="Delete" asp-route-id="@load.Id" class="btn btn-danger ml-2">Delete</a>}
+        </div>
+    </div>
+
+</div>}
+</div>

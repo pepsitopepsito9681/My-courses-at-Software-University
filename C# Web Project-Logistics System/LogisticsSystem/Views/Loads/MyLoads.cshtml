@@ -1,0 +1,15 @@
+﻿@model IEnumerable<LoadServiceModel>
+
+
+@{ ViewBag.Title = "My Loads";
+                ViewBag.AllowLoadEdit = true; }
+
+
+<h1 class="text-center mb-5 mt-3">@ViewBag.Title</h1>
+
+
+@if (!Model.Any())
+{
+<h2 class="text-center">No loads found !</h2>}
+
+<partial name="_LoadsPartial" model="@Model" />

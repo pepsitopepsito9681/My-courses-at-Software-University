@@ -1,0 +1,123 @@
+﻿@model LoadsQueryModel
+
+
+@{ ViewBag.Title = "All Loads"; }
+
+
+@if (Model.SearchTerm != null)
+{
+<h2>You have searched - @Model.SearchTerm</h2>
+                <h2>Result : @Model.Loads.Count()</h2>}
+
+
+<form method="get" class="mt-5">
+
+    <div class="row mb-5">
+
+        <div class="form-group col-md-2">
+            <label asp-for="Kind"></label>
+            <select asp-for="Kind" id="selectcat" class="form-control">
+                <option value="" class="rhth">All</option>
+                @foreach (var loadKind in Model.Kinds)
+                {
+    <option class="@loadKind.Id" value="@loadKind.Name">@loadKind.Name</option>}
+            </select>
+            <span asp-validation-for="Kind" class="small text-danger"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label asp-for="SubKind"></label>
+            <select asp-for="SubKind" id="selectprod" class="form-control">
+                <option value="" class="rhth23">All</option>
+                @foreach (var loadSubKind in Model.SubKinds)
+                {
+    <option value="@loadSubKind.Name" class="selectors @loadSubKind.KindId">@loadSubKind.Name</option>}
+
+            </select>
+            <span asp-validation-for="SubKind" class="small text-danger"></span>
+        </div>
+
+
+        <div class="form-group col-md-3">
+            <div class="form-group">
+                <label asp-for="LoadSorting"></label>
+                <select asp-for="LoadSorting" class="form-control" asp-items="Html.GetEnumSelectList<LoadSorting>()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="LoadSorting" class="small text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="form-inline col-md-3 ">
+            <div class="form-group">
+                <input asp-for="SearchTerm" class="form-control mr-sm-2" placeholder="Deep Search">
+                <button asp-controller="Loads" asp-action="All" class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                <span asp-validation-for="SearchTerm" class="small text-danger"></span>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+@if (!Model.Loads.Any())
+{
+<h2 class="text-center">No loads found within the given criteria !</h2>}
+
+
+<partial name="_LoadsPartial" model="@Model.Loads" />
+
+
+@{ var previousPage = Model.CurrentPage - 1;
+                if (previousPage < 1)
+                {
+                    previousPage = 1;
+                }
+
+                var maxPage = Math.Ceiling((double)Model.TotalLoads / LoadsQueryModel.LoadsPerPage); }
+
+<div class="row">
+    <div class="col-md-6">
+        <a class="btn btn-primary @(Model.CurrentPage==1 ? "disabled":string.Empty)"
+           asp-controller="Loads"
+           asp-action="All"
+           asp-route-kind="@Model.Kind"
+           asp-route-searchTerm="@Model.SearchTerm"
+           asp-route-loadSorting="@Model.LoadSorting"
+           asp-route-currentPage="@previousPage">Previous</a>
+    </div>
+    <div class="col-md-6">
+        <a class="btn btn-primary float-right @(Model.CurrentPage==maxPage || !Model.Loads.Any()  ? "disabled" : string.Empty)"
+           asp-controller="Loads"
+           asp-action="All"
+           asp-route-kind="@Model.Kind"
+           asp-route-searchTerm="@Model.SearchTerm"
+           asp-route-loadSorting="@Model.LoadSorting"
+           asp-route-currentPage="@(Model.CurrentPage+1)">Next</a>
+    </div>
+</div>
+
+
+@section Scripts {
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.3.2.js"
+            integrity="sha256-BDmtN+79VRrkfamzD16UnAoJP8zMitAz093tvZATdiE="
+            crossorigin="anonymous"></script>
+
+    <script type="text/javascript">$(document).ready(function () {
+            var allOptions = $('#selectprod option')
+            $('#selectcat').change(function () {
+                $('#selectprod option').remove()
+                var classN = $('#selectcat option:selected').prop('class');
+                var opts = allOptions.filter('.' + classN);
+                $.each(opts, function (i, j) {
+                    $(j).appendTo('#selectprod');
+                });
+            });
+        });</script>
+}

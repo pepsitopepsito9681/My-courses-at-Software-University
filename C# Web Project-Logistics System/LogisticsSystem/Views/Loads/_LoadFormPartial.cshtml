@@ -1,0 +1,89 @@
+﻿@model LoadFormModel
+
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 ofset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center">@ViewBag.Title</h2>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" placeholder="please enter Title">
+                <span asp-validation-for="Title" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" rows="6" class="form-control" placeholder="please enter Description"></textarea>
+                <span asp-validation-for="Description" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstImageUrl"></label>
+                <input asp-for="FirstImageUrl" class="form-control" placeholder="Your fine URL here...">
+                <span asp-validation-for="FirstImageUrl" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondImageUrl"></label>
+                <input asp-for="SecondImageUrl" class="form-control" placeholder="Your fine URL here...">
+                <span asp-validation-for="SecondImageUrl" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThirdImageUr"></label>
+                <input asp-for="ThirdImageUr" class="form-control" placeholder="Your fine URL here...">
+                <span asp-validation-for="ThirdImageUr" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" class="form-control" placeholder="please enter Price in format 00.00">
+                <span asp-validation-for="Price" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity"></label>
+                <input asp-for="Quantity" class="form-control" placeholder="please enter Quantity">
+                <span asp-validation-for="Quantity" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KindId"></label>
+                <select asp-for="KindId" id="selectcat" class="form-control">
+                    <option value="" class="rhth">Select Kind</option>
+                    @foreach (var loadKind in Model.Kinds)
+                    {
+        <option class="@loadKind.Id" value="@loadKind.Id">@loadKind.Name</option>}
+                </select>
+                <span asp-validation-for="KindId" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubKindId"></label>
+                <select asp-for="SubKindId" id="selectprod" class="form-control">
+                    <option value="" class="rhth23">Select SubKinds</option>
+                    @foreach (var loadSubKind in Model.SubKinds)
+                    {
+        <option value="@loadSubKind.Id" class="selectors @loadSubKind.KindId">@loadSubKind.Name</option>}
+                </select>
+                <span asp-validation-for="SubKindId" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Condition"></label>
+                <select asp-for="Condition" class="form-control" asp-items="Html.GetEnumSelectList<LoadCondition>()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="Condition" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Delivery"></label>
+                <select asp-for="Delivery" class="form-control" asp-items="Html.GetEnumSelectList<PersonType>()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="Delivery" class="small text-danger"></span>
+            </div>
+            @if (ViewBag.AddingLoad == true)
+            {
+<div class="form-group">
+    <input asp-for="AgreeOnTermsOfPolitics">
+    <label asp-for="AgreeOnTermsOfPolitics">I agree on your terms and condition</label>
+    <br />
+    <span asp-validation-for="AgreeOnTermsOfPolitics" class="small text-danger"></span>
+</div>            }
+            <input class="btn btn-primary float-right" type="submit" value="Save" />
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary float-right mr-3">Back</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@model List<FavouriteServiceModel>
+
+@{ ViewBag.Title = "Favourite Loads"; }
+
+@if (!Model.Any())
+{
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-3 col-lg-8 ofset-xl-3 col-xl-6 mt-3">
+
+        <h2>You do not have Favourite Loads</h2>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary mt-3 offset-4">Go to Home Page </a>
+
+    </div>
+</div> }
+            else
+            {
+
+<h1 class="text-center mb-5 mt-5">@ViewBag.Title</h1>
+
+                <partial name="_FavouritesPartial" model="@Model" />}
