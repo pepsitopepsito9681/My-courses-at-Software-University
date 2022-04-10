@@ -1,0 +1,23 @@
+﻿@model CartItemServiceModel
+
+@{ ViewBag.Title = "Edit Cart Load Quantity";
+
+                var loadQuantityList = Enumerable.Range(1, Model.LoadQuantity).ToList(); }
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 ofset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center">@ViewBag.Title</h2>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.Quantity"></label>
+                <select asp-for="@Model.Quantity" class="form-control">
+
+                    @foreach (var quantity in loadQuantityList)
+                    {
+        <option value="@quantity">@quantity</option>}
+                </select>
+            </div>
+            <input class="btn btn-primary float-right" type="submit" value="Save" />
+        </form>
+    </div>
+</div>
