@@ -28,9 +28,4 @@
     <ProjectReference Include="..\LogisticsSystem\LogisticsSystem.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\Admin\" />
-    <Folder Include="Pipeline\" />
-  </ItemGroup>
-
 </Project>
