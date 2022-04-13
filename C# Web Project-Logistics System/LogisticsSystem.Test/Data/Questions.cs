@@ -55,7 +55,7 @@ namespace LogisticsSystem.Test.Data
 
 
 
-        public static List<Question> GetQuestionsByProduct(string loadId = "TestId", int count = 5)
+        public static List<Question> GetQuestionsByLoad(string loadId = "TestId", int count = 5)
           => Enumerable.Range(0, count).Select(i => new Question()
           {
               Content = "Question Content",
