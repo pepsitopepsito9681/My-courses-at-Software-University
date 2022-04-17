@@ -1,0 +1,54 @@
+﻿@model IEnumerable<LoadServiceModel>
+
+@{ var isDeleted = ViewBag.IsDeleted ?? false; }
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            @if (isDeleted)
+            {
+<th scope="col">Deleted</th> }
+            else
+            {
+<th scope="col">Published</th>            }
+
+            <th scope="col">Title</th>
+            <th scope="col">Price</th>
+            <th scope="col">Condition</th>
+            @if (!isDeleted)
+            {
+<th scope="col">Approved</th>            }
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var load in Model)
+        {
+<tr>
+    <td scope="col">@(load.DeletedOn != string.Empty ? load.DeletedOn : load.PublishedOn )</td>
+    <td scope="col">@load.Title</td>
+    <td scope="col">@load.Price</td>
+    <td scope="col">@load.Condition</td>
+    @if (!isDeleted)
+    {
+<td scope="col">@(load.IsPublic ? "Yes":"No")</td>}
+
+
+
+    <td scope="col">
+        <a asp-area="" asp-controller="Loads" asp-action="Delete" asp-route-id="@load.Id" class="btn btn-danger float-right ml-1">Delete</a>
+        <a asp-controller="Products" asp-action="Reports" asp-route-id="@load.Id" class="btn btn-dark float-right ml-1">Reports</a>
+        <a asp-area="" asp-controller="Loads" asp-action="Edit" asp-route-id="@load.Id" class="btn btn-warning float-right ml-1">Edit</a>
+        <a asp-area="" asp-controller="Loads" asp-action="Details" asp-route-id="@load.Id" class="btn btn-primary float-right ml-1">Details</a>
+
+        @if (isDeleted)
+        {
+<a asp-area="Admin" asp-controller="Loads" asp-action="Revive" asp-route-id="@load.Id" class="btn btn-info float-right ml-1">Revive</a> }
+                else
+                {
+<a asp-controller="Loads" asp-action="ChangeVisibility" asp-route-id="@load.Id" class="btn btn-info float-right ml-1 ">@(load.IsPublic ? "Hide": "Show")</a>}
+
+    </td>
+</tr>}
+    </tbody>
+</table>

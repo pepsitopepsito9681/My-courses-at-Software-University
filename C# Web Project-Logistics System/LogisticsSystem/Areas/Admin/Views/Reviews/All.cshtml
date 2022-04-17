@@ -1,0 +1,53 @@
+﻿@model ReviewsQueryModel
+
+@{ ViewBag.Title = "Reviews Administration"; }
+<h1 class="text-center mt-2 mb-3">@ViewBag.Title</h1>
+
+
+@if (Model.SearchTerm != null)
+{
+<h4>You have searched - @Model.SearchTerm</h4>
+                <h4>Result : @Model.Reviews.Count()</h4>}
+
+
+<form method="get">
+
+    <div class="row mt-3 mb-5">
+        <div class="col-md-7"></div>
+        <div class="form-inline col-md-3 ">
+            <div class="form-group">
+                <input asp-for="SearchTerm" class="form-control mr-sm-2" placeholder="Search">
+                <button asp-controller="Reviews" asp-action="All" class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                <span asp-validation-for="SearchTerm" class="small text-danger"></span>
+            </div>
+        </div>
+    </div>
+</form>
+
+<partial name="_ReviewsPartial" model="@Model.Reviews">
+
+
+    @{ var previousPage = Model.CurrentPage - 1;
+                    if (previousPage < 1)
+                    {
+                        previousPage = 1;
+                    }
+
+                    var maxPage = Math.Ceiling((double)Model.TotalReviews / ReviewsQueryModel.ReviewsPerPage); }
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <a class="btn btn-primary @(Model.CurrentPage==1 ? "disabled":string.Empty)"
+               asp-controller="Reviews"
+               asp-action="All"
+               asp-route-searchTerm="@Model.SearchTerm"
+               asp-route-currentPage="@previousPage">Previous</a>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-primary float-right @(Model.CurrentPage==maxPage || !Model.Reviews.Any()  ? "disabled" : string.Empty)"
+               asp-controller="Reviews"
+               asp-action="All"
+               asp-route-searchTerm="@Model.SearchTerm"
+               asp-route-currentPage="@(Model.CurrentPage+1)">Next</a>
+        </div>
+    </div>

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DeliveryCartItemServiceModel>
+
+@{ var isAccomplished = ViewBag.IsAccomplished; }
+
+
+@foreach (var cartItem in Model)
+{
+
+    var isLoadAvailable = cartItem.LoadQuantity > 0;
+    var loadQuantityList = Enumerable.Range(1, cartItem.LoadQuantity).ToList();
+    var traderName = cartItem.TraderName != null ? cartItem.TraderName : "Admin";
+    var traderNumber = cartItem.TraderTelephoneNumber != null ? cartItem.TraderTelephoneNumber : "Admin";
+
+
+
+<div class="row mt-5">
+    <div class="col m-md-2">
+        <img src="@cartItem.ImageUrl" alt="@cartItem.LoadTitle" class="img-thumbnail">
+
+    </div>
+    <div class="col-md-6 ml-5">
+        <a asp-area="" asp-controller="Loads" asp-action="Details" asp-route-id="@cartItem.LoadId"><h3 class="mt-3">@cartItem.LoadTitle</h3></a>
+        <h5 class="mt-3">Condition: @cartItem.LoadCondition</h5>
+
+        <h5>Delivery: @cartItem.LoadDelivery</h5>
+
+        @if (isLoadAvailable && !isAccomplished)
+        {
+<div class="row mb-3">
+    <div class="form-group col-md-3 ml-10">
+        <label asp-for="@cartItem.Quantity"></label>
+        <select asp-for="@cartItem.Quantity" class="form-control">
+
+            @foreach (var quantity in loadQuantityList)
+            {
+<option value="@quantity">@quantity</option>}
+        </select>
+        <a asp-area="" asp-controller="DeliveryCart" asp-action="Edit" asp-route-Id="@cartItem.Id">Edit</a>
+    </div>
+</div> }
+                else if (isAccomplished)
+                {
+<h5>Load Count : @cartItem.Quantity</h5>}
+        <h5>Trader : @(traderName)</h5>
+        <h5>PhoneNumber : @(traderNumber)</h5>
+
+    </div>
+
+    <div class="col-md-2 mt-5">
+        <h5 class="btn btn-outline-@(isLoadAvailable ? "primary":"danger")">@(isLoadAvailable ? "Available": "Exhausted")</h5>
+        <h3>@(cartItem.Price.ToString("F2") + " лв.")</h3>
+        <hr />
+        @if (!isAccomplished)
+        {
+<a asp-area="" asp-controller="DeliveryCart" asp-action="Delete" asp-route-id="@cartItem.Id">Delete</a>}
+    </div>
+
+</div>
+
+<hr />
+}

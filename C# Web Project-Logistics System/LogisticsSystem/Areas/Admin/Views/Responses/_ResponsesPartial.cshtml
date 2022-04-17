@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ResponseServiceModel>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">User</th>
+            <th scope="col">Content</th>
+            <th scope="col">Approved</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var response in Model)
+        {
+<tr>
+    <td scope="col">@response.PublishedOn</td>
+    <td scope="col">@response.UserName</td>
+
+    <td scope="col">@(new string(response.Content.Take(50).ToArray()))</td>
+
+    <td scope="col">@(response.IsPublic ? "Yes":"No")</td>
+
+    <td scope="col">
+        <a asp-controller="Responses" asp-action="Delete" asp-route-id="@response.Id" class="btn btn-danger float-right ml-3">Delete</a>
+        <a asp-controller="Responses" asp-action="ChangeVisibility" asp-route-id="@response.Id" class="btn btn-info float-right ml-3 ">@(response.IsPublic ? "Hide": "Show")</a>
+
+    </td>
+</tr>}
+    </tbody>
+</table>

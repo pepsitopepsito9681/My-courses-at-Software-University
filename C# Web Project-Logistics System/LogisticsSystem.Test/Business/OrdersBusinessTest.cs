@@ -8,11 +8,11 @@ using Xunit;
 using static LogisticsSystem.Test.Data.DeliveryCartItems;
 using static LogisticsSystem.Test.Data.Dealers;
 
-namespace LogisticsSystem.Test.Pipeline
+namespace LogisticsSystem.Test.Business
 {
 
 
-    public class OrdersPipelineTest
+    public class OrdersBusinessTest
     {
         [Fact]
         public void GetAddOrderShouldBeForAuthorizedUsersAndReturnViewWithCorrectModel()

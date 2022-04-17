@@ -13,11 +13,11 @@ using static LogisticsSystem.Test.Data.Loads;
 using static LogisticsSystem.Test.Data.Questions;
 using static LogisticsSystem.Test.Data.Reviews;
 
-namespace LogisticsSystem.Test.Pipeline
+namespace LogisticsSystem.Test.Business
 {
 
 
-    public class LoadsPipelineTest
+    public class LoadsBusinessTest
     {
         [Fact]
         public void MyLoadsShouldBeForAuthorizedUsersReturnViewWithCorrectDataAndModel()

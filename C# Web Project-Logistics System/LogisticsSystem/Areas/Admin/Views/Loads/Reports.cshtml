@@ -1,0 +1,27 @@
+﻿@model LoadReportsDetailsModel
+
+@{ ViewBag.Title = "Load Reports"; }
+
+<h1 class="text-center mb-5 mt-5">@ViewBag.Title</h1>
+
+
+<div class="row mb-3">
+    <div class="col-md-3">
+        <img src="@Model.Load.Image" alt="@Model.Load.Title" class="img-thumbnail">
+
+    </div>
+    <div class="col-md-4">
+        <h4>Reports for :</h4>
+        <a asp-area="" asp-controller="Loads" asp-action="Details" asp-route-id="@Model.Load.Id"><h5>@Model.Load.Title</h5></a>
+    </div>
+    <div class="col-md-2">
+        <h3>@(Model.Load.Price+" лв.")</h3>
+
+    </div>
+
+
+</div>
+
+<hr />
+
+<partial name="_LoadReportsPartial" model="@Model.Reports">

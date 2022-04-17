@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ReportServiceModel>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">User</th>
+            <th scope="col">Load</th>
+            <th scope="col">Kind</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var report in Model)
+        {
+<tr>
+    <td scope="col">@report.PublishedOn</td>
+    <td scope="col">@report.UserName</td>
+    <td scope="col">@report.LoadTitle</td>
+    <td scope="col">@report.ReportKind</td>
+
+
+    <td scope="col">
+        <a asp-controller="Reports" asp-action="Delete" asp-route-id="@report.Id" class="btn btn-danger float-right ml-3">Delete</a>
+        <a asp-controller="Loads" asp-action="Reports" asp-route-id="@report.LoadId" class="btn btn-primary float-right ml-3">Details</a>
+
+    </td>
+</tr>}
+    </tbody>
+</table>
